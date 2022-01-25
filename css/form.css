@@ -1,0 +1,101 @@
+.titleForm {
+  position: relative;
+  display: inline-block;
+  width: 90%;
+  height: 24px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+.titleInput {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  border-bottom: 2px solid #678983;
+  color: black;
+  font-size: 18px;
+}
+.dateDiv {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  width: 90%;
+  height: 24px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  color: black;
+}
+.progressForm {
+  text-align: center;
+  color: black;
+  width: 90%;
+  border-bottom: solid #678983 2px;
+  margin: 5px 0px 20px 20px;
+}
+.labelCursor {
+  cursor: pointer;
+}
+.radioMar {
+  margin: 4px 12px 4px 12px;
+}
+.contentForm {
+  text-align: center;
+  color: black;
+  width: 90%;
+  border-bottom: solid #678983 2px;
+  margin: 5px 0px 5px 20px;
+}
+.inputTextarea {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: black;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.choiceBtn {
+  position: relative;
+  width: 90%;
+  margin: 5px 0px 5px 20px;
+  text-align: right;
+}
+.cancelForm {
+  display: inline-block;
+  width: 80px;
+  height: 28px;
+  border: solid 2px #181d31;
+  margin-right: 10px;
+}
+.finishForm {
+  display: inline-block;
+  width: 80px;
+  height: 28px;
+  border: solid 2px #181d31;
+}
+.cancelBtn {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: 0.5s ease all;
+}
+.cancelBtn:hover {
+  background-color: rgb(219, 219, 219);
+}
+.finishBtn {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  transition: 0.5s ease all;
+}
+.finishBtn:hover {
+  background-color: rgb(219, 219, 219);
+}

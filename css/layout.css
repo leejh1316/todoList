@@ -1,0 +1,149 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: whitesmoke;
+}
+.mainContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.mainLayout {
+  position: relative;
+  height: 100%;
+  width: 70%;
+  margin: auto;
+}
+.gridLayout {
+  position: absolute;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-height: 82%;
+}
+.addBtnDiv {
+  width: 100%;
+  height: 100%;
+}
+.tableLayout {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  grid-template-columns: 100%;
+  grid-template-rows: 60px auto;
+  border: solid 2px #181d31;
+  border-top-right-radius: 15px;
+}
+.tableColumns {
+  position: relative;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 10% 25% 25% 25% 15%;
+  text-align: center;
+  border-bottom: 2px solid #181d31;
+}
+/* .tableColumns {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 2px solid #181d31;
+} */
+.tableRowCon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.tableRowInner {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+}
+.tableRowItem {
+  display: block;
+  background-color: turquoise;
+  width: 100%;
+  height: 25%;
+  max-height: 25%;
+}
+
+.dataInnerCon {
+  position: absolute;
+  width: 65%;
+  height: 35%;
+  z-index: -2;
+  left: 50%;
+  top: 54%;
+  transform: translate(-50%, -50%);
+}
+.dataInner {
+  position: relative;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 15px;
+  background-color: whitesmoke;
+  border: solid 2px #678983;
+}
+.deleteCon {
+  position: fixed;
+  z-index: -3;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: 150px;
+  border: solid 2px #181d31;
+}
+.deleteInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.deleteText {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  font-size: 22px;
+  margin: 30px auto;
+  text-align: center;
+}
+.deleteBtns {
+  position: relative;
+  width: 80%;
+  height: 35px;
+  margin: auto;
+  text-align: center;
+}
+.deleteOkBtn {
+  height: 90%;
+  width: 38%;
+  margin: 5px 10px 5px 10px;
+  background-color: transparent;
+}
+.deleteNoBtn {
+  height: 90%;
+  width: 38%;
+  margin: 5px 10px 5px 10px;
+  background-color: transparent;
+}
+ol,
+li {
+  padding: 0;
+  margin: 0;
+}

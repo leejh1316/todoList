@@ -1,0 +1,31 @@
+.todoAddBtn {
+  position: relative;
+  top: 40%;
+  width: 30px;
+  height: 30px;
+  left: 97.3%;
+  border: black solid 1px;
+  border-radius: 1em;
+  cursor: pointer;
+  transition: ease 0.8s all;
+}
+.todoAddBtn:hover {
+  transform: rotate(120deg);
+}
+.todoAddIcon {
+  position: relative;
+  background-color: rgb(0, 0, 0);
+  width: 2.3px;
+  height: 22px;
+  left: 48%;
+  top: 15%;
+}
+.todoAddIcon::after {
+  position: absolute;
+  content: "";
+  width: 22px;
+  top: 9.7px;
+  left: -10.2px;
+  height: 2.3px;
+  background-color: rgb(0, 0, 0);
+}

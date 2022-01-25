@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/icon.css" />
+    <link rel="stylesheet" href="css/ani.css" />
+    <link rel="stylesheet" href="css/form.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <title>todoList_JH</title>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <div class="mainLayout">
+        <div class="gridLayout">
+          <div class="addBtnDiv">
+            <div class="todoAddBtn">
+              <div class="todoAddIcon"></div>
+            </div>
+          </div>
+          <div class="tableLayout">
+            <div class="tableColumns">
+              <div>번호</div>
+              <div>제목</div>
+              <div>시작일/종료일</div>
+              <div>진행상황</div>
+              <div>관리</div>
+            </div>
+            <div class="tableRowCon">
+              <ul class="tableRowInner"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dataInnerCon">
+        <div class="dataInner">
+          <form class="titleForm" onsubmit="return false">
+            <input type="text" placeholder="제목" required class="titleInput" />
+          </form>
+          <div class="dateDiv">
+            <form class="startDateForm">
+              <label>시작일</label>
+              <input type="date" class="startDate" />
+            </form>
+            <form class="endDateForm">
+              <label>종료일</label>
+              <input type="date" class="finishDate" />
+            </form>
+          </div>
+          <form class="progressForm">
+            <div>진행상황</div>
+            <div>
+              <label for="wait" class="labelCursor">대기</label>
+              <label for="progress" class="labelCursor">진행중</label>
+              <label for="finish" class="labelCursor">완료</label>
+            </div>
+            <input
+              type="radio"
+              id="wait"
+              name="progressInput"
+              value="대기"
+              class="radioMar"
+            />
+            <input
+              type="radio"
+              id="progress"
+              name="progressInput"
+              value="진행중"
+              class="radioMar"
+            />
+            <input
+              type="radio"
+              id="finish"
+              name="progressInput"
+              value="완료"
+              class="radioMar"
+            />
+          </form>
+          <form class="contentForm" onsubmit="return false">
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="7"
+              style="resize: none"
+              placeholder="상세설명"
+              class="inputTextarea"
+            ></textarea>
+          </form>
+          <div class="choiceBtn">
+            <form class="cancelForm">
+              <input type="button" value="취소" class="cancelBtn" />
+            </form>
+            <form class="finishForm">
+              <input type="submit" value="확인" class="finishBtn" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="deleteCon">
+        <div class="deleteInner">
+          <div class="deleteText">삭제?</div>
+          <div class="deleteBtns">
+            <button class="deleteOkBtn">확인</button>
+            <button class="deleteNoBtn">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/todo.js"></script>
+  </body>
+</html>
