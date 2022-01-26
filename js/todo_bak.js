@@ -17,22 +17,22 @@ let progressCheck;
 // localStorage
 let todos = [];
 const TODOS_KEY = "todoList";
-//로컬 스토리지 저장 함수
+
 function saveTodoList() {
-  localStorage.setItem(TODOS_KEY, JSON.stringify(todos)); //setItem("Key", "array") 문자열로 저장됨, [1,2,3] -> "1,2,3", JSON.stringify([1,2,3]) ->[1,2,3]
+  localStorage.setItem(TODOS_KEY, JSON.stringify(todos));
 }
 
 //애니메이션 추가 삭제
 todoAddBtn.addEventListener("click", function () {
   finishBtn.addEventListener("click", addTodoListEvent);
-  fade.in();
+  fadeIn();
 });
 cancelBtn.addEventListener("click", function () {
-  fade.out();
+  fadeOut();
   valueInit();
 });
 
-//[폼 값 초기화]
+//폼에 있던 값들 초기화
 function valueInit() {
   titleInput.value = "";
   startDate.value = "";
@@ -42,21 +42,19 @@ function valueInit() {
     radio.checked = false;
   });
 }
-//[애니메이션 중복 제거]
-const fade = {
-  in: function () {
-    dataInnerCon.classList.remove("zIndexOut");
-    dataInner.classList.remove("fadeOut");
-    dataInnerCon.classList.add("zIndexIn");
-    dataInner.classList.add("fadeIn");
-  },
-  out: function () {
-    dataInnerCon.classList.remove("zIndexIn");
-    dataInner.classList.remove("fadeIn");
-    dataInnerCon.classList.add("zIndexOut");
-    dataInner.classList.add("fadeOut");
-  },
-};
+//애니메이션 중복제거용
+function fadeIn() {
+  dataInnerCon.classList.remove("zIndexOut");
+  dataInner.classList.remove("fadeOut");
+  dataInnerCon.classList.add("zIndexIn");
+  dataInner.classList.add("fadeIn");
+}
+function fadeOut() {
+  dataInnerCon.classList.remove("zIndexIn");
+  dataInner.classList.remove("fadeIn");
+  dataInnerCon.classList.add("zIndexOut");
+  dataInner.classList.add("fadeOut");
+}
 
 //확인버튼 클릭시 이벤트 처리
 function addTodoListEvent(e) {
@@ -80,23 +78,57 @@ function addTodoListEvent(e) {
       progress: progressCheck,
       text: inputTextarea.value,
     };
-    fade.out();
     todos.push(newTodoObj);
+    //애니메이션 추가
+    dataInnerCon.classList.remove("zIndexIn");
+    dataInner.classList.remove("fadeIn");
+    dataInnerCon.classList.add("zIndexOut");
+    dataInner.classList.add("fadeOut");
     printList(newTodoObj);
+    //엘리먼트 추가
+    // const createList = document.createElement("li");
+    // const createDetails = document.createElement("details");
+    // const createSummary = document.createElement("summary");
+    // const createP = document.createElement("p");
+    // const createDivTitle = document.createElement("div");
+    // const createDivDate = document.createElement("div");
+    // const createDivProgress = document.createElement("div");
+    // const createDivManagement = document.createElement("div");
+    // const createBtnDelete = document.createElement("button");
+    // const createBtnEdit = document.createElement("button");
+    // createDivTitle.innerHTML = `${titleInput.value}`;
+    // createDivDate.innerHTML = `${startDate.value} / ${finishDate.value}`;
+    // createDivProgress.innerHTML = `${progressCheck}`;
+    // createBtnEdit.classList.add("editBtn");
+    // createBtnDelete.classList.add("deleteBtn");
+    // createBtnEdit.addEventListener("click", editButtonEvent);
+    // createBtnDelete.addEventListener("click", removeEvent);
+    // createBtnEdit.innerText = `🔧`;
+    // createBtnDelete.innerText = `❌`;
+    // createDivManagement.append(createBtnEdit);
+    // createDivManagement.append(createBtnDelete);
+    // createP.innerHTML = `${inputTextarea.value.replace(/(\n|\r\n)/g, "<br>")}`;
+    // createSummary.append(createDivTitle);
+    // createSummary.append(createDivDate);
+    // createSummary.append(createDivProgress);
+    // createSummary.append(createDivManagement);
+    // createDetails.append(createSummary);
+    // createDetails.append(createP);
+    // createList.id = newTodoObj.id;
+    // createList.append(createDetails);
+    // tableRowInner.append(createList);
     saveTodoList();
     valueInit();
   }
 }
-// [수정버튼] ,추가된 버튼 이벤트 추가 + 기존정보 표시
+//추가된 버튼 이벤트 추가 + 기존정보 표시
 function editButtonEvent(e) {
-  console.dir(e);
-  console.dir(e.target.parentElement.parentElement.parentElement.parentElement);
   //확인 버튼으로 수정하기 위해 기존에 있던 이벤트 삭제
   finishBtn.removeEventListener("click", addTodoListEvent);
   let startDateText;
   let finishDateText;
   const children = e.target.parentElement.parentElement.children; //summary 요소의 자식들
-  fade.in();
+  fadeIn();
   //전역변수
   titleEdit = children[0];
   dateEdit = children[1];
@@ -129,7 +161,7 @@ function editButtonEvent(e) {
     finish: finishDateText,
     progress: children[2].innerHTML,
     text: e.target.parentElement.parentElement.parentElement.children[1]
-      .innerText,
+      .innerHTML,
   };
   //기존 정보 표시
   titleInput.value = newEditObj.title;
@@ -143,7 +175,6 @@ function editButtonEvent(e) {
   inputTextarea.value = newEditObj.text;
   finishBtn.addEventListener("click", editFinishButtonEvent);
 }
-
 //확인버튼 -> 수정버튼 이벤트
 function editFinishButtonEvent(e) {
   e.preventDefault();
@@ -151,14 +182,14 @@ function editFinishButtonEvent(e) {
   titleEdit.innerHTML = `${titleInput.value}`;
   dateEdit.innerHTML = `${startDate.value} / ${finishDate.value}`;
   progressEdit.innerHTML = `${prog()}`;
-  textEdit.innerHTML = `${inputTextarea.value.replace(/(\n|\r\n)/g, "<br>")}`;
+  textEdit.innerHTML = `${inputTextarea.value}`;
   //todos에서 찾은 list Id값으로 로컬 저장소 값 수정
   todos[editFindIndex].title = `${titleInput.value}`;
   todos[editFindIndex].date = `${startDate.value} / ${finishDate.value}`;
   todos[editFindIndex].progress = `${prog()}`;
   todos[editFindIndex].text = `${inputTextarea.value}`;
   saveTodoList();
-  fade.out();
+  fadeOut();
   valueInit();
 }
 
@@ -177,11 +208,11 @@ function removeEvent(e) {
   deleteCon.classList.remove("delFadeOut");
   deleteCon.classList.add("delFadeIn");
   deleteElement =
-    e.target.parentElement.parentElement.parentElement.parentElement; //부모 : li
+    e.target.parentElement.parentElement.parentElement.parentElement;
 }
-
 function deleteOkEvent(e) {
   todos = todos.filter((todoID) => todoID.id !== parseInt(deleteElement.id));
+  console.log(todos);
   deleteElement.remove();
   deleteCon.classList.remove("delFadeIn");
   deleteCon.classList.add("delFadeOut");
