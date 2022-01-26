@@ -29,3 +29,9 @@
   height: 2.3px;
   background-color: rgb(0, 0, 0);
 }
+
+@media screen and (max-width: 1080px) {
+  .todoAddBtn {
+    left: 47%;
+  }
+}

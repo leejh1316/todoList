@@ -216,15 +216,15 @@ function printList(newTodo) {
   createBtnDelete.addEventListener("click", removeEvent);
   createBtnEdit.innerText = `🔧`;
   createBtnDelete.innerText = `❌`;
-  createDivManagement.append(createBtnEdit);
-  createDivManagement.append(createBtnDelete);
+  createDivManagement.append(createBtnEdit, createBtnDelete);
   createP.innerHTML = `${newTodo.text.replace(/(\n|\r\n)/g, "<br>")}`;
-  createSummary.append(createDivTitle);
-  createSummary.append(createDivDate);
-  createSummary.append(createDivProgress);
-  createSummary.append(createDivManagement);
-  createDetails.append(createSummary);
-  createDetails.append(createP);
+  createSummary.append(
+    createDivTitle,
+    createDivDate,
+    createDivProgress,
+    createDivManagement
+  );
+  createDetails.append(createSummary, createP);
   createList.append(createDetails);
   createList.id = newTodo.id;
   tableRowInner.append(createList);

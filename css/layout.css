@@ -149,7 +149,7 @@ li {
   margin: 0;
 }
 
-/* @media screen and (max-width: 1080px) {
+@media screen and (max-width: 1080px) {
   .mainLayout {
     height: 100%;
     width: 100%;
@@ -159,9 +159,12 @@ li {
     left: 0;
     top: 0;
     height: 95%;
-    width: 95%;
+    width: 97%;
     grid-template-columns: 100%;
     grid-template-rows: 60px auto;
     transform: translate(0, 0);
   }
-} */
+  .tableLayout {
+    border-radius: 0;
+  }
+}
