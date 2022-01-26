@@ -32,6 +32,8 @@
 
 @media screen and (max-width: 1080px) {
   .todoAddBtn {
-    left: 47%;
+    left: 0;
+    top: 25px;
+    margin: auto;
   }
 }
