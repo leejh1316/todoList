@@ -110,6 +110,7 @@ body {
   width: 350px;
   height: 150px;
   border: solid 2px #181d31;
+  background-color: whitesmoke;
 }
 .deleteInner {
   position: relative;
