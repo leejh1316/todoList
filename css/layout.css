@@ -160,9 +160,9 @@ li {
     top: 0;
     height: 95%;
     width: 98%;
-    margin: auto;
     grid-template-columns: 100%;
     grid-template-rows: 60px auto;
+    margin: auto;
     transform: translate(0, 0);
   }
   .tableLayout {
