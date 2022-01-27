@@ -144,6 +144,7 @@ function editButtonEvent(e) {
   dateEdit = children[1];
   progressEdit = children[2];
   textEdit = e.target.parentElement.parentElement.parentElement.children[1]; // li요소 자식의 [1]번째 요소
+  console.dir(textEdit.innerHTML.replace(/(<br>)/g, "\n"));
   //로컬 스토리지 수정에 쓰일 인덱스값 찾기
   editFindIndex = todos.findIndex(
     (x) =>
@@ -170,8 +171,10 @@ function editButtonEvent(e) {
     start: startDateText,
     finish: finishDateText,
     progress: children[2].innerHTML,
-    text: e.target.parentElement.parentElement.parentElement.children[1]
-      .innerText,
+    text: e.target.parentElement.parentElement.parentElement.children[1].innerHTML.replace(
+      /(<br>)/g,
+      "\n"
+    ),
   };
   //기존 정보 표시
   titleInput.value = newEditObj.title;
