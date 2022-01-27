@@ -7,6 +7,7 @@ li {
   grid-template-rows: 100%;
   counter-increment: list-number;
   border-bottom: solid 2px rgb(218, 218, 218);
+  transition: ease 0.7s all;
 }
 li::before {
   text-align: center;
@@ -33,6 +34,7 @@ summary {
 p {
   word-break: break-all;
   margin: 10px 0;
+  width: 98%;
 }
 /* summary::before {
   position: relative;
@@ -48,11 +50,18 @@ button {
   border: solid 2px rgb(133, 133, 133);
   margin: 0px 5px 0px 5px;
   border-radius: 4px;
+  transition: ease 0.4s all;
+}
+button:hover {
+  background-color: rgb(133, 133, 133);
 }
 
 @media screen and (max-width: 1080px) {
   button {
     border: none;
     width: 60%;
+  }
+  .dates {
+    font-size: 12px;
   }
 }

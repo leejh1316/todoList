@@ -22,7 +22,6 @@
   animation: delFadeOut 1ms;
   animation-fill-mode: both;
 }
-
 @keyframes delFadeIn {
   from {
     opacity: 0;

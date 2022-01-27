@@ -171,4 +171,13 @@ li {
   .tableLayout {
     border-radius: 0;
   }
+  .dataInnerCon {
+    width: 90%;
+  }
+  .dataInner {
+    border-radius: 0;
+  }
+  .deleteCon {
+    width: 250px;
+  }
 }
