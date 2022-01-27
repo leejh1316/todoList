@@ -160,9 +160,10 @@ li {
   .gridLayout {
     position: relative;
     left: 0;
-    top: 0;
+    top: 3%;
     height: 95%;
     width: 96%;
+    max-height: 90%;
     margin: auto;
     grid-template-columns: 100%;
     grid-template-rows: 60px auto;
