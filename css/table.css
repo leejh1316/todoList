@@ -33,7 +33,6 @@ summary {
 p {
   word-break: break-all;
   margin: 10px 0;
-  border-left: solid 2px black;
 }
 /* summary::before {
   position: relative;
