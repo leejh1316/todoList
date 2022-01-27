@@ -14,7 +14,8 @@ body {
 .mainLayout {
   position: relative;
   height: 100%;
-  width: 70%;
+  width: 100%;
+  max-width: 916px;
   margin: auto;
 }
 .gridLayout {
@@ -83,7 +84,8 @@ body {
 
 .dataInnerCon {
   position: absolute;
-  width: 65%;
+  width: 100%;
+  max-width: 716px;
   height: auto;
   max-height: 35%;
   z-index: -2;

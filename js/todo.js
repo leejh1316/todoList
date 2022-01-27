@@ -19,18 +19,56 @@ let todos = [];
 const TODOS_KEY = "todoList";
 //로컬 스토리지 저장 함수
 function saveTodoList() {
-  localStorage.setItem(TODOS_KEY, JSON.stringify(todos)); //setItem("Key", "array") 문자열로 저장됨, [1,2,3] -> "1,2,3", JSON.stringify([1,2,3]) ->[1,2,3]
+  localStorage.setItem(TODOS_KEY, JSON.stringify(todos)); //setItem("Key", "array") 문자열로 저장됨, [1,2,3] -> "1,2,3", JSON.stringify([1,2,3]) ->"[1,2,3]"
 }
 
-//애니메이션 추가 삭제
-todoAddBtn.addEventListener("click", function () {
+function todoAddEvent() {
+  finishBtn.removeEventListener("click", editFinishButtonEvent);
   finishBtn.addEventListener("click", addTodoListEvent);
+  btns.addDis();
+  if (todos.length > 0) {
+    btns.editDis();
+    btns.removeDis();
+  }
   fade.in();
-});
+}
+
+todoAddBtn.addEventListener("click", todoAddEvent);
 cancelBtn.addEventListener("click", function () {
+  btns.addIs();
+  if (todos.length > 0) {
+    btns.editIs();
+    btns.removeIs();
+  }
   fade.out();
   valueInit();
 });
+
+//버튼 비활성화/활성화
+const btns = {
+  editDis: function () {
+    const editBtnDis = document.querySelectorAll(".editBtn");
+    editBtnDis.forEach((btn) => (btn.disabled = "disabled"));
+  },
+  editIs: function () {
+    const editBtnIs = document.querySelectorAll(".editBtn");
+    editBtnIs.forEach((btn) => (btn.disabled = ""));
+  },
+  removeDis: function () {
+    const delBtnDis = document.querySelectorAll(".deleteBtn");
+    delBtnDis.forEach((btn) => (btn.disabled = "disabled"));
+  },
+  removeIs: function () {
+    const delBtnIs = document.querySelectorAll(".deleteBtn");
+    delBtnIs.forEach((btn) => (btn.disabled = ""));
+  },
+  addDis: function () {
+    todoAddBtn.style.zIndex = "-6";
+  },
+  addIs: function () {
+    todoAddBtn.style.zIndex = "6";
+  },
+};
 
 //[폼 값 초기화]
 function valueInit() {
@@ -85,12 +123,16 @@ function addTodoListEvent(e) {
     printList(newTodoObj);
     saveTodoList();
     valueInit();
+    btns.addIs();
+    btns.editIs();
+    btns.removeIs();
   }
 }
 // [수정버튼] ,추가된 버튼 이벤트 추가 + 기존정보 표시
 function editButtonEvent(e) {
-  console.dir(e);
-  console.dir(e.target.parentElement.parentElement.parentElement.parentElement);
+  btns.addDis();
+  btns.removeDis();
+  btns.editDis();
   //확인 버튼으로 수정하기 위해 기존에 있던 이벤트 삭제
   finishBtn.removeEventListener("click", addTodoListEvent);
   let startDateText;
@@ -160,6 +202,9 @@ function editFinishButtonEvent(e) {
   saveTodoList();
   fade.out();
   valueInit();
+  btns.addIs();
+  btns.editIs();
+  btns.removeIs();
 }
 
 //중복제거용 라디오 체크값 찾기
@@ -176,6 +221,10 @@ function prog() {
 function removeEvent(e) {
   deleteCon.classList.remove("delFadeOut");
   deleteCon.classList.add("delFadeIn");
+
+  btns.addDis();
+  btns.editDis();
+  btns.removeDis();
   deleteElement =
     e.target.parentElement.parentElement.parentElement.parentElement; //부모 : li
 }
@@ -186,10 +235,19 @@ function deleteOkEvent(e) {
   deleteCon.classList.remove("delFadeIn");
   deleteCon.classList.add("delFadeOut");
   saveTodoList();
+  btns.addIs();
+  if (todos.length > 0) {
+    btns.editIs();
+    btns.removeIs();
+  }
 }
 function deleteNoEvent() {
   deleteCon.classList.remove("delFadeIn");
   deleteCon.classList.add("delFadeOut");
+
+  btns.addIs();
+  btns.editIs();
+  btns.removeIs();
 }
 
 deleteOkBtn.addEventListener("click", deleteOkEvent);
@@ -234,6 +292,6 @@ function printList(newTodo) {
 const getItmes = localStorage.getItem(TODOS_KEY);
 if (getItmes) {
   const todoPrint = JSON.parse(getItmes); // 문자열 -> 배열 형태로 변경
-  todos = todoPrint; // todos의 초기값은 [] 이기 때문에 저장된 값이 있다면 불러옴
+  todos = todoPrint; // todos의 초기값은 todos=[] 이기 때문에 저장된 값이 있다면 불러옴
   todoPrint.forEach(printList);
 }
